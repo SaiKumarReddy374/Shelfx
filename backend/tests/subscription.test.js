@@ -1,10 +1,10 @@
-// File: tests/subscription.test.js
 import request from 'supertest';
-import app from '../index.js';
+import app from '../db.js';
 
-describe('Subscription APIs', () => {
+describe('Subscription Routes', () => {
   it('should return all subscriptions', async () => {
-    const res = await request(app).get('/api/subscriptions');
+    const res = await request(app).get('/subscriptions');
     expect(res.statusCode).toBe(200);
+    expect(Array.isArray(res.body)).toBe(true);
   });
 });

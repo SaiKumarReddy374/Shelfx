@@ -1,10 +1,9 @@
-// File: tests/book.test.js
 import request from 'supertest';
-import app from '../index.js';
+import app from '../db.js';
 
-describe('Book APIs', () => {
-  it('should return total book count', async () => {
-    const res = await request(app).get('/api/books/count');
+describe('Book Routes', () => {
+  it('should return books count', async () => {
+    const res = await request(app).get('/books/count');
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('count');
   });

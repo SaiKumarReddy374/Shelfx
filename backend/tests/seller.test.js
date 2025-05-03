@@ -1,16 +1,16 @@
-// File: tests/seller.test.js
 import request from 'supertest';
-import app from '../index.js';
+import app from '../db.js';
 
-describe('Seller APIs', () => {
-  it('should return all sellers (admin)', async () => {
-    const res = await request(app).get('/api/sellers');
+describe('Seller Routes', () => {
+  it('should fetch all sellers', async () => {
+    const res = await request(app).get('/sellers');
     expect(res.statusCode).toBe(200);
     expect(Array.isArray(res.body)).toBe(true);
   });
 
   it('should return seller count', async () => {
-    const res = await request(app).get('/api/countSellers');
+    const res = await request(app).get('/countSellers');
     expect(res.statusCode).toBe(200);
+    expect(res.body).toHaveProperty('count');
   });
 });
